@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { sendNote } from "../utility/Api";
 
-function CreateArea({ notes, setNotes }) {
+function CreateArea({ refreshNotes }) {
   const [note, setNote] = useState({ title: "", content: "" });
 
   const handleChange = (event) => {
@@ -9,7 +10,7 @@ function CreateArea({ notes, setNotes }) {
   };
 
   return (
-    <div>
+    <div className="create-area">
       <form>
         <input
           onChange={handleChange}
@@ -20,14 +21,15 @@ function CreateArea({ notes, setNotes }) {
         <textarea
           onChange={handleChange}
           name="content"
-          placeholder="Take a note..."
+          placeholder="Enter a note..."
           rows="3"
           value={note.content}
         />
         <button
-          onClick={(event) => {
+          onClick={async (event) => {
             if (note.title?.trim() !== "" && note.content?.trim() !== "") {
-              setNotes([...notes, note]);
+              await sendNote(note);
+              refreshNotes();
               setNote({ title: "", content: "" });
             }
             event.preventDefault();
