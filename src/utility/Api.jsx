@@ -2,24 +2,11 @@ import axios from "axios";
 
 const basePath = process.env.REACT_APP_API_BASE_PATH;
 
-const get = () => {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(basePath + "/receivenotes")
-      .then((res) => {
-        resolve(res.data);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-};
-
 export const getNotes = async () => {
   try {
-    return await get("/receivenotes");
+    return await axios.get(basePath + "/receivenotes");
   } catch (error) {
-    console.log("failed to recieve notes", error);
+    console.log(error);
   }
 };
 

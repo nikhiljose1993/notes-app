@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteNote } from "../utility/Api";
 
-const Note = ({ title, note, id, updateId, refreshNotes }) => {
+const Note = ({ title, note, id, setId, refreshNotes }) => {
   return (
     <div className="note">
       <h1>{title}</h1>
@@ -16,7 +16,7 @@ const Note = ({ title, note, id, updateId, refreshNotes }) => {
       </button>
       <button
         onClick={() => {
-          updateId(id);
+          setId(id);
         }}
       >
         EDIT

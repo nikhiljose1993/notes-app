@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { updateNote } from "../utility/Api";
 
-const EditNote = ({ note, refreshNotes, updateId }) => {
-  const [newNote, setNewNote] = useState({ title: "", content: "" });
+const EditNote = ({ note, refreshNotes }) => {
+  const [newNote, setNewNote] = useState(note);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNewNote((newNote) => ({ ...newNote, [name]: value }));
   };
-
-  useEffect(() => {
-    setNewNote(note);
-  }, [note]);
 
   return (
     <div className="note">
@@ -25,14 +21,13 @@ const EditNote = ({ note, refreshNotes, updateId }) => {
         <textarea
           onChange={handleChange}
           name="content"
-          placeholder="Take a newNote..."
+          placeholder="Edit Note..."
           rows="4"
           value={newNote.content}
         />
         <button
           onClick={async (event) => {
             await updateNote(newNote);
-            updateId(null);
             refreshNotes();
           }}
         >

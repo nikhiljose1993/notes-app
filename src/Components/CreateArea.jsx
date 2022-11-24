@@ -21,7 +21,7 @@ function CreateArea({ refreshNotes }) {
         <textarea
           onChange={handleChange}
           name="content"
-          placeholder="Take a note..."
+          placeholder="Enter a note..."
           rows="3"
           value={note.content}
         />

@@ -9,15 +9,12 @@ import EditNote from "./EditNote";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-  const [i, setI] = useState();
+  const [id, setId] = useState(null);
 
   const fetchNotes = async () => {
-    const data = await getNotes();
-    setNotes(data.notes);
-  };
-
-  const updateId = (id) => {
-    setI(id);
+    const res = await getNotes();
+    console.log("note imside app", res.data.notes);
+    setNotes(res.data.notes);
   };
 
   // useEffect with empty dependancy array will be called on first render of the component file.
@@ -30,22 +27,17 @@ const App = () => {
       <Header />
       <CreateArea refreshNotes={fetchNotes} />
       {notes.map((note, index) =>
-        i !== note._id ? (
+        id !== note._id ? (
           <Note
             key={index}
             id={note._id}
             title={note.title}
             note={note.content}
-            updateId={updateId}
+            setId={setId}
             refreshNotes={fetchNotes}
           />
         ) : (
-          <EditNote
-            key={note._id}
-            note={note}
-            refreshNotes={fetchNotes}
-            updateId={updateId}
-          />
+          <EditNote key={note._id} note={note} refreshNotes={fetchNotes} />
         )
       )}
 
