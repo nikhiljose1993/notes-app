@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { updateNote } from "../utility/Api";
 
-const EditNote = ({ note, refreshNotes }) => {
+const EditNote = ({ note, refreshNotes, setId }) => {
   const [newNote, setNewNote] = useState(note);
 
   const handleChange = (event) => {
@@ -11,7 +11,11 @@ const EditNote = ({ note, refreshNotes }) => {
 
   return (
     <div className="note">
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <input
           onChange={handleChange}
           name="title"
@@ -26,8 +30,9 @@ const EditNote = ({ note, refreshNotes }) => {
           value={newNote.content}
         />
         <button
-          onClick={async (event) => {
+          onClick={async () => {
             await updateNote(newNote);
+            setId(null);
             refreshNotes();
           }}
         >

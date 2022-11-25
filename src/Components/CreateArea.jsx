@@ -11,7 +11,11 @@ function CreateArea({ refreshNotes }) {
 
   return (
     <div className="create-area">
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <input
           onChange={handleChange}
           name="title"
@@ -26,13 +30,12 @@ function CreateArea({ refreshNotes }) {
           value={note.content}
         />
         <button
-          onClick={async (event) => {
+          onClick={async () => {
             if (note.title?.trim() !== "" && note.content?.trim() !== "") {
               await sendNote(note);
               refreshNotes();
               setNote({ title: "", content: "" });
             }
-            event.preventDefault();
           }}
         >
           Add

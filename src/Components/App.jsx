@@ -37,7 +37,12 @@ const App = () => {
             refreshNotes={fetchNotes}
           />
         ) : (
-          <EditNote key={note._id} note={note} refreshNotes={fetchNotes} />
+          <EditNote
+            key={note._id}
+            note={note}
+            refreshNotes={fetchNotes}
+            setId={setId}
+          />
         )
       )}
 
