@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { sendNote } from "../utility/Api";
 
-function CreateArea({ refreshNotes }) {
+function CreateArea({ refreshNotes, setLoading }) {
   const [note, setNote] = useState({ title: "", content: "" });
 
   const handleChange = (event) => {
@@ -32,8 +32,10 @@ function CreateArea({ refreshNotes }) {
         <button
           onClick={async () => {
             if (note.title?.trim() !== "" && note.content?.trim() !== "") {
+              setLoading(true);
               await sendNote(note);
               refreshNotes();
+
               setNote({ title: "", content: "" });
             }
           }}

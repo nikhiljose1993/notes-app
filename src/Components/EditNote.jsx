@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { updateNote } from "../utility/Api";
 
-const EditNote = ({ note, refreshNotes, setId }) => {
+const EditNote = ({ note, refreshNotes, setId, setLoading }) => {
   const [newNote, setNewNote] = useState(note);
 
   const handleChange = (event) => {
@@ -31,6 +31,7 @@ const EditNote = ({ note, refreshNotes, setId }) => {
         />
         <button
           onClick={async () => {
+            setLoading(true);
             await updateNote(newNote);
             setId(null);
             refreshNotes();

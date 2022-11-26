@@ -1,6 +1,7 @@
 {
   "name": "keeper-app-part-1-starting",
   "version": "1.0.0",
+  "homepage": "https://notes-app.github.io",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
@@ -8,16 +9,20 @@
     "axios": "^1.1.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-loader-spinner": "^5.3.4",
     "react-scripts": "3.2.0"
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
