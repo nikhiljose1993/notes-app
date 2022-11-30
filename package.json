@@ -1,7 +1,7 @@
 {
   "name": "notes-app",
   "version": "0.1.0",
-  "homepage": "https://nikhiljose1993.github.io/notes-app/public",
+  "homepage": "http://nikhiljose1993.github.io/notes-app",
   "main": "src/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
