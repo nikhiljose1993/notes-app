@@ -20,8 +20,9 @@ header {
 
 header h1 {
   color: #fff;
-  font-family: "McLaren", cursive;
-  font-weight: 200;
+  font-family: "Playball", cursive;
+  font-weight: 100;
+  font-size: 250%;
 }
 
 footer {
